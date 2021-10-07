@@ -1,0 +1,123 @@
+//under HTML
+//no code was in javascript
+
+<script
+src="https://threejs.org/build/three.js"></script> 
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Template Three.js app</title>
+<style>
+      /* feel free to style the canvas any way you want. If you want it to
+      use the entire window, set width: 100% and height: 100%. */
+      
+      canvas {
+          display: block;
+          margin: 10px auto;
+          width: 100%;
+          height: 100;
+      }
+    </style>
+<script src="https://cs.wellesley.edu/~cs307/threejs/libs/three-r95.all.js">
+"https://cs.wellesley.edu/~cs307/threejs/libs/three-r80.min.js"
+</script>
+<!-- omit dat.gui and OrbitControls if you don't need them -->
+<script src="https://cs.wellesley.edu/~cs307/threejs/libs/OrbitControls-r95.js">
+"https://cs.wellesley.edu/~cs307/threejs/libs/OrbitControls-r80.js"
+</script>
+<script src="https://cs.wellesley.edu/~cs307/threejs/libs/dat.gui-r95.js">
+"https://cs.wellesley.edu/~cs307/threejs/libs/dat.gui-r80.min.js"
+</script>
+<script src="https://cs.wellesley.edu/~cs307/threejs/libs/tw-sp21.js">
+"https://cs.wellesley.edu/~cs307/threejs/libs/tw-fa18.js"
+</script>
+</head>
+<body>
+
+<script>
+// We always need a scene.
+var scene = new THREE.Scene();
+const geometry = new THREE.PlaneGeometry( 11, 100);
+const material = new THREE.MeshBasicMaterial( {color: 0xffff00} );//Yellow
+const plane = new THREE.Mesh( geometry, material );
+const material1 = new THREE.MeshBasicMaterial( {color: 0x0000ff} );//Duke blue
+const plane1 = new THREE.Mesh( geometry, material1 );
+const material2 = new THREE.MeshBasicMaterial ( {color: (0,0,0)});//Black
+const plane2 = new THREE.Mesh( geometry, material2);
+const material3 = new THREE.MeshBasicMaterial ( {color: 0xFF0000});//Red
+const plane3 = new THREE.Mesh( geometry, material3);
+const material4 = new THREE.MeshBasicMaterial ( {color: 0x0FFFF});//Sky blue
+const geometry1 = new THREE.PlaneGeometry(34/5 , 11 );
+const top_plane1 = new THREE.Mesh (geometry1, material4);
+const material5 = new THREE.MeshBasicMaterial ({color: 0xFF000});//Green
+const top_plane2 = new THREE.Mesh (geometry1, material5);
+const material6 = new THREE.MeshBasicMaterial ({color: 0xFF00FF}); // Pink
+const top_plane3 = new THREE.Mesh (geometry1, material6);
+const material7 = new THREE.MeshBasicMaterial ({color: (165,42,42)}); //Navy Blue
+const top_plane4 = new THREE.Mesh (geometry1, material7);
+
+plane1.rotation.y += 1.5;
+plane1.position.x += 5;
+plane1.position.z += -5.5;
+plane2.rotation.y += Math.PI;
+//plane2.position.x += 11;
+plane2.position.z += -11;
+plane3.rotation.y -= Math.PI/2;
+plane3.position.x -= 5;
+plane3.position.z -= 5.5;
+top_plane1.position.y += 55;
+top_plane1.position.z -= 2.1
+top_plane2.position.y += 55;
+top_plane2.position.z -= 5.5;
+top_plane2.position.x = 3.4;
+top_plane2.rotation.y += Math.PI/2;
+top_plane3.position.y +=55;
+top_plane3.rotation.y += Math.PI;
+top_plane3.position.z +=-8.9;
+top_plane4.position.y +=55;
+top_plane4.rotation.y -= Math.PI/2;
+top_plane4.position.x -= 3.4;
+top_plane4.position.z -= 5.5;
+//plane4.position.z +=5.5;
+const vert_top = top_plane1.geometry.vertices;
+vert_top[0].x += 3.4;
+vert_top[1].x -= 3.4; 
+vert_top[0].z -=3.4;
+vert_top[1].z -=3.4;
+const vert_base = plane.geometry.vertices;
+vert_base[0].x += 2.1;
+vert_base[1].x -= 2.1;
+vert_base[0].z -= 2.1;
+vert_base[1].z -= 2.1;
+
+scene.add( plane, plane1, plane2, plane3, top_plane1, top_plane2, top_plane3, top_plane4 );
+
+// ====================================================================
+
+/* Next, we create objects in our scene. Here, just a box and barn. The
+center of the box is the origin, so, for example, the x coordinates go
+from -2 to +2. Delete these and put your code here.  */
+
+
+// ================================================================
+// 
+// We always need a renderer
+
+var renderer = new THREE.WebGLRenderer();
+
+TW.mainInit(renderer,scene);
+
+/* We always need a camera; here we'll use a default orbiting camera.  The
+third argument are the ranges for the coordinates, to help with setting up
+the placement of the camera. They need not be perfectly accurate, but if
+they are way off, your camera might not see anything, and you'll get a
+blank canvas. */
+
+TW.cameraSetup(renderer,
+               scene,
+               {minx: -10, maxx: 55,
+                miny: -10, maxy: 55,
+                minz: -10, maxz: 50});
+</script>
+</body>
+</html>
